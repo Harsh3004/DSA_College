@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 
+// Function for taking input in an Array
 int TakeInput(int *arr, int n){
     cout << "Enter the elements you want to insert" << endl;
     for(int i = 0 ; i < n ; i++){
@@ -9,6 +10,7 @@ int TakeInput(int *arr, int n){
     return n;
 }
 
+// Function for insertion of element at particular index
 void InsertAtIndex(int *arr , int element ,int index , int size){
     for(int i = size ; i > index ; i--){
         arr[i] = arr[i-1];
@@ -16,6 +18,7 @@ void InsertAtIndex(int *arr , int element ,int index , int size){
     arr[index] = element;
 }
 
+// Function for deletion of element at particular index
 void DeleteAtIndex(int *arr, int deleteIndex , int elementCnt){
      for(int i = deleteIndex; i < elementCnt-1 ; i++){
         arr[i] = arr[i+1];
@@ -25,6 +28,7 @@ void DeleteAtIndex(int *arr, int deleteIndex , int elementCnt){
     arr[elementCnt-1] = -1;
 }
 
+// Function for printing all elements in an Array
 void printArr(int *arr, int n){
     for (int i = 0; i < n; i++)
     {
@@ -47,12 +51,13 @@ int main(){
     do
     {
         cout << "Now you can perform following operations:" << endl;
-        cout << "1. Insertion" << endl << "2. Deletion" << endl << "3. Updation" << endl << "4. Print All Elements in Array" << endl << "5. Exit" << endl << "Enter the number for performing specific operation" << endl;
+        cout << "1. Insertion" << endl << "2. Deletion" << endl << "3. Updation" << endl << "4. Print All Elements in Array" << endl << "5. Exit" << endl << "Enter the number for performing specific operation: " ;
 
         cin >> oper;
 
         switch (oper)
         {
+            // ------------------------ Insertion ------------------------
             case 1:
                 int n;
 
@@ -83,6 +88,7 @@ int main(){
                 }
                 break;
 
+            // ------------------------ Deletion ------------------------
             case 2:
                 if(elementCnt == 0)
                     cout << "Array is empty, Deletion cannot perform " << endl;
@@ -142,6 +148,7 @@ int main(){
 
                 break;
 
+            // ------------------------ Updation ------------------------
             case 3:
                 cout << "Choose Updation Method: " << endl
                      << "1. Update value at Index" << endl
@@ -176,6 +183,7 @@ int main(){
 
                 break;
 
+            // ------------------------ Display Array ------------------------
             case 4:
                 if(elementCnt == 0)
                     cout << "Array is Empty" << endl;
@@ -184,6 +192,7 @@ int main(){
                 }
                 break;
             
+            // ------------------------ Exit ------------------------
             default:
                 if(oper != 5)
                     cout << "Invalid Choice" << endl;
