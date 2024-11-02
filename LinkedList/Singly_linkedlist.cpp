@@ -186,9 +186,76 @@ int main(){
 
             // ----------------------- Updation -----------------------
             case 3:
+                if(head == NULL){
+                    cout << "Linked List is Empty" << endl;
+                    break;
+                }
+
+                int choice;
+
+                cout << "Choose Updation Method: " << endl
+                     << "1. By Position" << endl
+                     << "2. By Value" << endl
+                     << "Enter your Choice: ";
+                cin >> choice;
+
+                switch (choice)
+                {
+                // Updation By Position
+                case 1:
+                    int pos;
+                    cout << "Position of node which you want to update: ";
+                    cin >> pos;
+                    if(pos <= 0 || pos > cnt)
+                        cout << "Invalid position!" << endl;
+                    else{
+                        node* temp = head;
+                        while (pos>1)
+                        {
+                            temp = temp->next;
+                            pos--;
+                        }
+                        cout << "Enter the updated value for the position: ";
+                        cin >> temp->data;
+                    }
+                    break;
+                
+                // Updation By Value
+                case 2:
+                {
+                    int value;
+                    cout << "Enter the value you want to update in Linked List: ";
+                    cin >> value;
+
+                    // For checking wheater the value found atleast one or not
+                    bool flag = 0;
+
+                    node* temp = head;
+
+                    while (temp != NULL)
+                    {
+                        if (temp->data == value)
+                        {
+                            cout << "Enter the updated value for the position: ";
+                            cin >> temp->data;
+                            flag = 1;
+                        }
+                        temp = temp->next;
+                    }
+
+                    if(flag != 1)
+                        cout << "Entered value is not present in the linked list" << endl;
+
+                    break;
+                }
+                
+                default:
+                    cout << "Invalid Choice" << endl;
+                    break;
+                }
 
                 break;
-
+            
             // ----------------------- Display -----------------------
             case 4:
                 if(head == NULL)
@@ -214,7 +281,5 @@ int main(){
         }
     } while (oper != 5);
     
-    
-
     return 0;
 }
